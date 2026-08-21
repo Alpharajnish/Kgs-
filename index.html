@@ -150,7 +150,7 @@
     .app-card:active { transform: scale(0.98); border-color: rgba(6, 182, 212, 0.4); }
     
     .app-card-top { display: flex; align-items: flex-start; gap: 16px; }
-    .app-icon { width: 60px; height: 60px; border-radius: 14px; object-fit: cover; border: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; background: #ffffff; }
+    .app-icon { width: 60px; height: 60px; border-radius: 14px; object-fit: contain; border: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; background: #ffffff; padding: 2px; }
     .app-info h3 { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
     .app-info p { font-size: 13px; color: #94a3b8; line-height: 1.4; }
     .live-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; font-size: 11px; font-weight: 600; padding: 6px 14px; border-radius: 20px; align-self: flex-start; }
@@ -171,6 +171,7 @@
     </div>
     <button class="btn btn-primary" onclick="loginUser()">🔓 Unlock Website</button>
   </div>
+
   <!-- MAIN WEBSITE CONTENT -->
   <div id="main-content">
     <nav class="navbar">
@@ -180,6 +181,7 @@
       </a>
       <button class="logout-btn" onclick="logoutUser()">Logout</button>
     </nav>
+
     <header class="hero">
       <div class="pill-badge">
         <span class="dot"></span> 100% Free • Premium Courses Unlocked
@@ -194,21 +196,24 @@
         <a href="https://youtube.com/@rajnishstudyshorts?si=mPxFar33SZb9pHjA" class="btn btn-youtube" onclick="vibratePhone(40)">📺 Subscribe YouTube</a>
       </div>
     </header>
+
     <div class="stats-bar">
       <div class="stat-item"><div class="num">100+</div><div class="label">Batches</div></div>
       <div class="stat-item"><div class="num">1</div><div class="label">Platform</div></div>
       <div class="stat-item"><div class="num">₹0</div><div class="label">Cost</div></div>
       <div class="stat-item"><div class="num">24/7</div><div class="label">Access</div></div>
     </div>
+
     <div class="section-container" id="apps">
       <p class="section-tag">Official Platform</p>
       <h2 class="section-title">Explore Our App</h2>
       <p class="section-desc">Get instant free access to all premium batches.</p>
+
       <div class="apps-list">
         <!-- KHAN GLOBAL STUDIES CARD -->
         <a href="https://sahukgs.vercel.app/batches" target="_blank" class="app-card" onclick="vibratePhone(35)">
           <div class="app-card-top">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6s2lM12x-cK9aX2A51c-g4Q03m0Q7uY2e_w&s" 
+            <img src="https://khanglobalstudies.com/images/kgs-logo.png" 
                  onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Khan_Global_Studies_Logo.png/600px-Khan_Global_Studies_Logo.png';" 
                  alt="Official Khan Global Studies logo" 
                  class="app-icon">
@@ -222,14 +227,18 @@
       </div>
     </div>
   </div>
+
   <script>
     const CORRECT_PASSWORD = "Anup@Prime2026";
+
     if (localStorage.getItem("isLoggedIn_v3") === "true") {
       showMainContent();
     }
+
     function loginUser() {
       const passwordInput = document.getElementById("password").value;
       const errorMsg = document.getElementById("error-msg");
+
       if (passwordInput === CORRECT_PASSWORD) {
         localStorage.setItem("isLoggedIn_v3", "true");
         showMainContent();
@@ -238,16 +247,19 @@
         errorMsg.innerText = "Galat Password! Sahi password daalein.";
       }
     }
+
     function showMainContent() {
       document.getElementById("login-container").style.display = "none";
       document.getElementById("main-content").style.display = "flex";
     }
+
     function logoutUser() {
       localStorage.removeItem("isLoggedIn_v3");
       document.getElementById("login-container").style.display = "block";
       document.getElementById("main-content").style.display = "none";
       document.getElementById("password").value = "";
     }
+
     function vibratePhone(ms) {
       if ("vibrate" in navigator) {
         navigator.vibrate(ms);
@@ -256,3 +268,4 @@
   </script>
 </body>
 </html>
+
